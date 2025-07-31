@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const { TaskServices } = require("../services/task");
-const { postDataValidator } = require("../middleware/task");
+const { postDataValidator } = require("../middleware/post");
 
 class Routes {
   router;
