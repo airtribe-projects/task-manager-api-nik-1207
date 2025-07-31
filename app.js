@@ -9,14 +9,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/", new Routes().router);
 app.use(errorHandler);
 
-
 app.listen(port, (err) => {
     if (err) {
         return console.log('Something bad happened', err);
     }
     console.log(`Server is listening on ${port}`);
 });
-
-
 
 module.exports = app;
