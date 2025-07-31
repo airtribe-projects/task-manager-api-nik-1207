@@ -2,13 +2,18 @@ const { TaskDTO } = require("../dto/tasks");
 const Data = require("../../task.json");
 
 class Database {
-  tasks = [];
   constructor() {
+    if (Database.instance) {
+      return Database.instance;
+    }
+    
     this.tasks = Data.tasks.map(task => ({
       ...task,
       priority: task.priority || "medium",
       createdAt: task.createdAt ? new Date(task.createdAt) : new Date()
     }));
+    
+    Database.instance = this;
   }
   
   set(task) {
@@ -72,9 +77,27 @@ class Database {
     }
     return null;
   }
+  
+  // Static method to get the singleton instance
+  static getInstance() {
+    if (!Database.instance) {
+      Database.instance = new Database();
+    }
+    return Database.instance;
+  }
+  
+  // Method to reset the database (useful for testing)
+  reset() {
+    this.tasks = Data.tasks.map(task => ({
+      ...task,
+      priority: task.priority || "medium",
+      createdAt: task.createdAt ? new Date(task.createdAt) : new Date()
+    }));
+  }
 }
 
-const DB = new Database();
+// Create the singleton instance
+const DB = Database.getInstance();
 
 module.exports = {
   Database,
