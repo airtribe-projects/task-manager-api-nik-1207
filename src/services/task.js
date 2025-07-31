@@ -1,5 +1,5 @@
 const { TaskDTO } = require("../dto/tasks");
-const { createTask, deleteTask, getTaskByID, getTasks, updateTask } = require("../dao/tasks");
+const { createTask, deleteTask, getTaskByID, getTasks, updateTask, getTasksByPriority } = require("../dao/tasks");
 
 class TaskServices {
   createTask(taskPayload) {
@@ -10,8 +10,12 @@ class TaskServices {
     return getTaskByID(taskID);
   }
 
-  getTasks() {
-    return getTasks();
+  getTasks(filters = {}) {
+    return getTasks(filters);
+  }
+
+  getTasksByPriority(priority) {
+    return getTasksByPriority(priority);
   }
 
   updateTask(taskID, taskPayload) {
