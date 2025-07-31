@@ -35,7 +35,7 @@ class Database {
   }
   
   getTasks(filters = {}) {
-    let filteredTasks = [...this.tasks];
+    let filteredTasks = this.tasks.slice();
     
     // Filter by completion status
     if (filters.completed !== undefined) {
