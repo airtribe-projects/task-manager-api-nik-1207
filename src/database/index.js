@@ -1,4 +1,3 @@
-const { TaskDTO } = require("../dto/tasks");
 const Data = require("../../task.json");
 
 class Database {
