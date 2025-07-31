@@ -8,7 +8,10 @@ function postDataValidator(req, _res, next) {
     const error = createHttpError(400, parsedData.error.message);
     next(error);
   }
-  next();
+  else {
+    next();
+  }
+
 }
 
 module.exports = {
