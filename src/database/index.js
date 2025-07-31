@@ -60,7 +60,7 @@ class Database {
   }
   
   getTaskByID(id) {
-    return this.tasks[id - 1];
+    return this.get(id);
   }
   
   update(id, task) {
