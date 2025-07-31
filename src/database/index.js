@@ -31,7 +31,7 @@ class Database {
   }
   
   delete(id) {
-    this.tasks.splice(id, 1);
+    this.tasks.splice(id - 1, 1);
   }
   
   getTasks(filters = {}) {
